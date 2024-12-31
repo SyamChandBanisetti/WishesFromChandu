@@ -114,49 +114,8 @@
         }
 
         /* Hover Effects */
-        .hover-effect {
-            display: inline-block;
-            font-size: 1.5vw;
-            margin: 20px;
-            text-shadow: 3px 3px 5px #ff7675, -3px -3px 5px #74b9ff;
-            transition: transform 0.4s ease, text-shadow 0.4s ease, color 0.4s ease, rotate 0.4s ease;
-        }
-
-        .hover-effect:hover {
-            transform: scale(1.5) rotate(15deg); /* Increase scale and add rotation */
-            text-shadow: 3px 3px 10px #55efc4, -3px -3px 10px #fdcb6e;
-            color: #ff9e9e; /* Change text color on hover */
-        }
-
-        /* Additional Hover Effects */
-        .hover-effect-2 {
-            display: inline-block;
-            font-size: 1.5vw;
-            margin: 20px;
-            text-shadow: 3px 3px 5px #ff9e9e, -3px -3px 5px #74b9ff;
-            transition: transform 0.5s ease, text-shadow 0.5s ease, color 0.5s ease, background-color 0.5s ease;
-        }
-
-        .hover-effect-2:hover {
-            transform: scale(1.4) skew(15deg); /* Skew the element */
-            text-shadow: 3px 3px 12px #fdcb6e, -3px -3px 12px #55efc4;
-            color: #fdcb6e;
-            background-color: #2d3436; /* Dark background color */
-        }
-
-        .hover-effect-3 {
-            display: inline-block;
-            font-size: 1.5vw;
-            margin: 20px;
-            text-shadow: 3px 3px 5px #55efc4, -3px -3px 5px #fdcb6e;
-            transition: transform 0.5s ease, text-shadow 0.5s ease, color 0.5s ease, letter-spacing 0.5s ease;
-        }
-
-        .hover-effect-3:hover {
-            transform: scale(1.6) rotate(-15deg); /* Add negative rotation */
-            text-shadow: 3px 3px 15px #55efc4, -3px -3px 15px #ff7675;
-            color: #74b9ff;
-            letter-spacing: 3px; /* Increase letter spacing */
+        .hover-effect, .hover-effect-2, .hover-effect-3 {
+            display: none; /* Hide the hover effect elements */
         }
 
         /* User Input */
@@ -264,6 +223,7 @@
 
     <div class="countdown" id="countdown"></div>
 
+    <!-- Hover effects still in code but hidden from the page -->
     <p class="hover-effect">Touch Anywhere for a Cool blast...!</p>
     <p class="hover-effect-2">Another Hover Effect</p>
     <p class="hover-effect-3">Third Hover Effect</p>
