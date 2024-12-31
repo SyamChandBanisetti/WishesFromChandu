@@ -222,11 +222,20 @@
                 opacity: 1;
             }
         }
+
+        /* Responsive Image */
+        #pic {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px; /* Optional: Add some rounding to the image */
+        }
     </style>
 </head>
 <body>
     <div class="user-input" id="userInput">
-        <h2>Mee Name Enter Cheyyandi:</h2>
+        <h2>Enter Your Name:</h2>
         <input type="text" id="userName" placeholder="Your Name">
         <button onclick="saveName()">Submit</button>
     </div>
@@ -247,13 +256,16 @@
 
     <div class="fireworks" id="fireworks"></div>
 
+    <!-- Responsive Image -->
+    <img id="pic" src="pic.jpg" alt="Responsive Picture"> <!-- Add the image path -->
+
     <h1 class="glowing-text" id="backgroundText">As the new year begins, may it bring new hope and a renewed spirit. Here’s to new beginnings and endless possibilities! Wishing you joy and prosperity, Have a Great New Year Ahead!</h1>
 
     <div class="countdown" id="countdown"></div>
 
     <p class="hover-effect">Touch Anywhere for a Cool blast...!</p>
-    <p class="hover-effect-2"></p>
-    <p class="hover-effect-3"></p>
+    <p class="hover-effect-2">Another Hover Effect</p>
+    <p class="hover-effect-3">Third Hover Effect</p>
 
     <p class="fading-name" id="personalizedWishes">Wishes from Banisetti Syam Chand</p>
 
@@ -342,7 +354,7 @@
             countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
             if (timeLeft < 0) {
-                countdownElement.textContent = " Wish you a Happy New Year 2025 !";
+                countdownElement.textContent = "Wish you a Happy New Year 2025 !";
             }
         }
 
