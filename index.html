@@ -316,17 +316,39 @@
 
         setInterval(updateCountdown, 1000);
 
-        // User Input Handling
-        function saveName() {
-            const userName = document.getElementById('userName').value;
-            if (userName.trim() !== '') {
-                document.getElementById('personalizedWishes').textContent = `Great Wishes to ${userName} Garu from Chandu..`;
-                document.getElementById('userInput').style.display = 'none';
-                document.getElementById('backgroundText').style.display = 'block'; // Show background text after name is entered
-            } else {
-                alert('Please enter your name!');
-            }
+        // Typing Effect for Background Text
+function typeEffect(element, text, speed) {
+    let i = 0;
+    const interval = setInterval(() => {
+        element.innerHTML += text.charAt(i);
+        i++;
+        if (i === text.length) {
+            clearInterval(interval);  // Stop when all characters are typed
         }
+    }, speed);
+}
+
+// Trigger typing effect when the name is entered
+function saveName() {
+    const userName = document.getElementById('userName').value;
+    if (userName.trim() !== '') {
+        document.getElementById('personalizedWishes').textContent = `Great Wishes to ${userName} Garu from Chandu..`;
+        document.getElementById('userInput').style.display = 'none';
+        
+        const backgroundText = document.getElementById('backgroundText');
+        const textToType = "As the new year begins, may it bring new hope and a renewed spirit. Here’s to new beginnings and endless possibilities! Wishing you joy and prosperity, Have a Great New Year Ahead!";
+        
+        // Hide background text initially
+        backgroundText.innerHTML = '';
+        backgroundText.style.display = 'block';
+        
+        // Start typing effect
+        typeEffect(backgroundText, textToType, 100); // 100ms speed for typing effect
+    } else {
+        alert('Please enter your name!');
+    }
+            }
+        
     </script>
 </body>
 </html>
