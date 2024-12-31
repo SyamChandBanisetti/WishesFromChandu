@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -37,11 +37,12 @@
 
         /* Glowing Text */
         .glowing-text {
-            font-size: 3vw;
+            font-size: 4vw;
             text-align: center;
             text-shadow: 0 0 15px #fff, 0 0 25px #ff6b6b, 0 0 35px #ff6b6b, 0 0 45px #ff6b6b, 0 0 60px #ff6b6b;
             animation: glow 2s infinite alternate, text-fade-in 3s ease-out;
-            margin-top: 10vh;
+            margin-top: 20vh;
+            display: none; /* Hide text initially */
         }
 
         @keyframes glow {
@@ -62,20 +63,121 @@
             }
         }
 
-        /* Hover Effect Text */
-        .hover-effect {
-            font-size: 1rem; /* Reduced size */
+        /* Countdown Timer */
+        .countdown {
             text-align: center;
-            margin: 20px;
-            cursor: pointer;
-            animation: hover-fade 2s infinite alternate;
+            font-size: 2.5vw;
+            margin: 20px 0;
+            color: #f39c12;
+            animation: pulse 2s infinite;
         }
 
-        @keyframes hover-fade {
+        @keyframes pulse {
             0% {
-                opacity: 0.7;
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
             }
             100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Fading Name */
+        .fading-name {
+            font-size: 2vw;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 5s forwards, color-shift 6s infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes color-shift {
+            0% {
+                color: #ff7675;
+            }
+            100% {
+                color: #74b9ff;
+            }
+        }
+
+
+
+
+
+
+        /* User Input */
+        .user-input {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .user-input input {
+            padding: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .user-input button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6b6b;
+            color: white;
+            cursor: pointer;
+        }
+
+        .user-input button:hover {
+            background-color: #ff9a9a;
+        }
+
+        /* Stars Animation */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .stars span {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
                 opacity: 1;
             }
         }
@@ -95,38 +197,51 @@
     </style>
 </head>
 <body>
-    <!-- User Input -->
     <div class="user-input" id="userInput">
         <h2>Enter Your Name:</h2>
         <input type="text" id="userName" placeholder="Your Name">
         <button onclick="saveName()">Submit</button>
     </div>
 
-    <!-- Fireworks -->
+    <div class="stars">
+        <!-- Dynamic stars generation -->
+        <script>
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('span');
+                star.style.top = Math.random() * 100 + '%';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                starsContainer.appendChild(star);
+            }
+        </script>
+    </div>
+
     <div class="fireworks" id="fireworks"></div>
 
-    <!-- Glowing Text -->
     <h1 class="glowing-text" id="backgroundText">
+        As the new year begins, may it bring new hope and a renewed spirit.
         Wishing you joy and prosperity. Here is to a year of growth, resilience, and unshakable happiness.
     </h1>
 
-    <!-- Countdown Timer -->
+    <h1 class="glowing-text" id="backgroundText">
+        Let us toast to a year of good health and great accomplishments. Happy 2025!
+        May your dreams soar and your spirits remain high in the year & Have a Great New Year 2025 Ahead!
+    </h1>
+
     <div class="countdown" id="countdown"></div>
 
-    <!-- Hover Effect -->
     <p class="hover-effect">Touch Anywhere for a Cool Blast</p>
 
-    <!-- Personalized Wishes -->
     <p class="fading-name" id="personalizedWishes">Wishes from Banisetti Syam Chand</p>
 
-    <!-- Audio -->
     <audio autoplay loop>
         <source src="new_year_song.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <!-- Image -->
-    <img id="pic" src="pic.jpg" alt="Responsive Picture">
+    <!-- Image at the end of the page -->
+    <img id="pic" src="pic.jpg" alt="Responsive Picture"> <!-- Add the image path -->
 
     <script>
         // Fireworks Effect
@@ -196,7 +311,7 @@
         const countdownElement = document.getElementById('countdown');
 
         function updateCountdown() {
-            const newYear = new Date(`January 1, ${new Date().getFullYear() + 1} 00:00:00`).getTime();
+            const newYear = new Date(January 1, ${new Date().getFullYear() + 1} 00:00:00).getTime();
             const now = new Date().getTime();
             const timeLeft = newYear - now;
 
@@ -205,7 +320,7 @@
             const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownElement.textContent = ${days}d ${hours}h ${minutes}m ${seconds}s;
 
             if (timeLeft < 0) {
                 countdownElement.textContent = "Wish you a Happy New Year 2025!";
@@ -230,7 +345,7 @@
         function saveName() {
             const userName = document.getElementById('userName').value;
             if (userName.trim() !== '') {
-                document.getElementById('personalizedWishes').textContent = `Great Wishes to ${userName} Garu from Chandu..`;
+                document.getElementById('personalizedWishes').textContent = Great Wishes to ${userName} Garu from Chandu..;
                 document.getElementById('userInput').style.display = 'none';
 
                 const backgroundText = document.getElementById('backgroundText');
