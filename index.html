@@ -42,6 +42,7 @@
             text-shadow: 0 0 15px #fff, 0 0 25px #ff6b6b, 0 0 35px #ff6b6b, 0 0 45px #ff6b6b, 0 0 60px #ff6b6b;
             animation: glow 2s infinite alternate, text-fade-in 3s ease-out;
             margin-top: 20vh;
+            display: none; /* Hide text initially */
         }
 
         @keyframes glow {
@@ -215,7 +216,7 @@
     <div class="fireworks" id="fireworks"></div>
     <div class="overlay"></div>
 
-    <h1 class="glowing-text">As the new year begins, may it bring new hope and a renewed spirit. Here’s to new beginnings and endless possibilities!Wishing you joy and prosperity, Have a Great New Year Ahead!</h1>
+    <h1 class="glowing-text" id="backgroundText">As the new year begins, may it bring new hope and a renewed spirit. Here’s to new beginnings and endless possibilities! Wishing you joy and prosperity, Have a Great New Year Ahead!</h1>
 
     <div class="countdown" id="countdown"></div>
 
@@ -308,7 +309,7 @@
             countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
             if (timeLeft < 0) {
-                countdownElement.textContent = "Happy New Year 2025 !";
+                countdownElement.textContent = "Wish You a Happy New Year 2025 !";
             }
         }
 
@@ -318,8 +319,9 @@
         function saveName() {
             const userName = document.getElementById('userName').value;
             if (userName.trim() !== '') {
-                document.getElementById('personalizedWishes').textContent = `Wishes from ${userName}`;
+                document.getElementById('personalizedWishes').textContent = `Wishes to ${userName} from Syam Chand`;
                 document.getElementById('userInput').style.display = 'none';
+                document.getElementById('backgroundText').style.display = 'block'; // Show background text after name is entered
             } else {
                 alert('Please enter your name!');
             }
