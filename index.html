@@ -220,7 +220,6 @@
 
     <div class="countdown" id="countdown"></div>
 
-    <p class="hover-effect">Hover over this text for a cool effect!</p>
 
     <p class="fading-name" id="personalizedWishes">Wishes from Banisetti Syam Chand</p>
 
@@ -319,7 +318,7 @@
         function saveName() {
             const userName = document.getElementById('userName').value;
             if (userName.trim() !== '') {
-                document.getElementById('personalizedWishes').textContent = `Wishes to ${userName} from Syam Chand`;
+                document.getElementById('personalizedWishes').textContent = ` Great Wishes to ${userName} Garu from Syam Chand`;
                 document.getElementById('userInput').style.display = 'none';
                 document.getElementById('backgroundText').style.display = 'block'; // Show background text after name is entered
             } else {
