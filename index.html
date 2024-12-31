@@ -220,6 +220,8 @@
 
     <div class="countdown" id="countdown"></div>
 
+    <p class="hover-effect">Touch Anywhere for a Cool blast...!</p>
+
 
     <p class="fading-name" id="personalizedWishes">Wishes from Banisetti Syam Chand</p>
 
@@ -308,7 +310,7 @@
             countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
             if (timeLeft < 0) {
-                countdownElement.textContent = "Wish You a Happy New Year 2025 !";
+                countdownElement.textContent = " Wish you a Happy New Year 2025 !";
             }
         }
 
@@ -318,7 +320,7 @@
         function saveName() {
             const userName = document.getElementById('userName').value;
             if (userName.trim() !== '') {
-                document.getElementById('personalizedWishes').textContent = ` Great Wishes to ${userName} Garu from Syam Chand`;
+                document.getElementById('personalizedWishes').textContent = `Great Wishes to ${userName} Garu from Chandu..`;
                 document.getElementById('userInput').style.display = 'none';
                 document.getElementById('backgroundText').style.display = 'block'; // Show background text after name is entered
             } else {
