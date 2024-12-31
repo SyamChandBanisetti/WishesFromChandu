@@ -39,17 +39,26 @@
         .glowing-text {
             font-size: 4vw;
             text-align: center;
-            text-shadow: 0 0 5px #fff, 0 0 10px #ff6b6b, 0 0 15px #ff6b6b;
-            animation: glow 2s infinite alternate;
+            text-shadow: 0 0 15px #fff, 0 0 25px #ff6b6b, 0 0 35px #ff6b6b, 0 0 45px #ff6b6b, 0 0 60px #ff6b6b;
+            animation: glow 2s infinite alternate, text-fade-in 3s ease-out;
             margin-top: 20vh;
         }
 
         @keyframes glow {
             0% {
-                text-shadow: 0 0 5px #fff, 0 0 10px #ff6b6b, 0 0 15px #ff6b6b;
+                text-shadow: 0 0 15px #fff, 0 0 25px #ff6b6b, 0 0 35px #ff6b6b, 0 0 45px #ff6b6b, 0 0 60px #ff6b6b;
             }
             100% {
-                text-shadow: 0 0 10px #fff, 0 0 20px #ff9a9a, 0 0 30px #ff9a9a;
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff9a9a, 0 0 45px #ff9a9a, 0 0 60px #ff9a9a;
+            }
+        }
+
+        @keyframes text-fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
             }
         }
 
@@ -58,6 +67,23 @@
             text-align: center;
             font-size: 2.5vw;
             margin: 20px 0;
+            color: #f39c12;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* Fading Name */
@@ -65,7 +91,7 @@
             font-size: 2vw;
             text-align: center;
             opacity: 0;
-            animation: fadeIn 5s forwards;
+            animation: fadeIn 5s forwards, color-shift 6s infinite alternate;
         }
 
         @keyframes fadeIn {
@@ -77,42 +103,130 @@
             }
         }
 
+        @keyframes color-shift {
+            0% {
+                color: #ff7675;
+            }
+            100% {
+                color: #74b9ff;
+            }
+        }
+
         /* Colorful Shadows */
         .hover-effect {
             display: inline-block;
             font-size: 1.5vw;
             margin: 20px;
             text-shadow: 3px 3px 5px #ff7675, -3px -3px 5px #74b9ff;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
         }
 
         .hover-effect:hover {
             transform: scale(1.2);
+            text-shadow: 3px 3px 10px #55efc4, -3px -3px 10px #fdcb6e;
         }
 
-        /* Backdrop Filter */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Animated Stars */
+        .stars {
+            position: absolute;
             width: 100%;
             height: 100%;
-            backdrop-filter: blur(5px);
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .stars span {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* User Input */
+        .user-input {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .user-input input {
+            padding: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .user-input button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6b6b;
+            color: white;
+            cursor: pointer;
+        }
+
+        .user-input button:hover {
+            background-color: #ff9a9a;
         }
     </style>
 </head>
 <body>
+    <div class="user-input" id="userInput">
+        <h2>Enter Your Name:</h2>
+        <input type="text" id="userName" placeholder="Your Name">
+        <button onclick="saveName()">Submit</button>
+    </div>
+
+    <div class="stars">
+        <!-- Dynamic stars generation -->
+        <script>
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('span');
+                star.style.top = Math.random() * 100 + '%';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                starsContainer.appendChild(star);
+            }
+        </script>
+    </div>
+
     <div class="fireworks" id="fireworks"></div>
     <div class="overlay"></div>
 
-    <h1 class="glowing-text">As the new year begins, may it bring new hope and a renewed spirit. Here’s to new beginnings and endless possibilities!Wishing you joy and prosperity!,..
-        Wish you a Happy New Year 2025 !</h1>
+    <h1 class="glowing-text">As the new year begins, may it bring new hope and a renewed spirit. Here’s to new beginnings and endless possibilities!Wishing you joy and prosperity, Have a Great New Year Ahead!</h1>
 
     <div class="countdown" id="countdown"></div>
 
     <p class="hover-effect">Hover over this text for a cool effect!</p>
 
-    <p class="fading-name">Wishes from Banisetti Syam Chand</p>
+    <p class="fading-name" id="personalizedWishes">Wishes from Banisetti Syam Chand</p>
+
+    <audio autoplay loop>
+        <source src="new_year_song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
         // Fireworks Effect
@@ -194,11 +308,22 @@
             countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
             if (timeLeft < 0) {
-                countdownElement.textContent = "Happy New Year!";
+                countdownElement.textContent = "Happy New Year 2025 !";
             }
         }
 
         setInterval(updateCountdown, 1000);
+
+        // User Input Handling
+        function saveName() {
+            const userName = document.getElementById('userName').value;
+            if (userName.trim() !== '') {
+                document.getElementById('personalizedWishes').textContent = `Wishes from ${userName}`;
+                document.getElementById('userInput').style.display = 'none';
+            } else {
+                alert('Please enter your name!');
+            }
+        }
     </script>
 </body>
 </html>
